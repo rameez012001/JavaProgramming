@@ -1,14 +1,27 @@
 package practice;
 
-import java.util.HashMap;
+import java.util.HashSet;
 
 public class RepeatedChar {
-    public static void main(String[] args) {
-        HashMap<Character,Integer> x = new HashMap<>();
-        String q = "apple";
-        for (int i = 0; i < q.length(); i++) {
-            x.put(q.charAt(i), null);
+    static char check(String word){
+        HashSet<Character> charset = new HashSet<>();
+        for (int i = 0; i < word.length(); i++) { 
+            char x = word.charAt(i);
+            if(charset.contains(x)){
+                return x;
+            }else{
+                charset.add(x);
+            }
         }
-        System.out.println(x);
+        return '0';
+    }
+    public static void main(String[] args) {
+        String x = "ever";
+        char getRepeatedCharacter = RepeatedChar.check(x);
+        if(getRepeatedCharacter!='0'){
+            System.out.println("First Repeated Character is: "+getRepeatedCharacter);
+        }else{
+            System.out.println("No repeated Value");
+        }
     }
 }
